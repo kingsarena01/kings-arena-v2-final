@@ -68,14 +68,14 @@ button{
 
 </div>
 
+</script>
 <script type="module">
 import { db } from "./firebase-config.js";
 import {
 collection,
 addDoc,
 getDocs
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-
+} from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
 window.addPlayer = async function () {
 
 const player=document.getElementById("playerName").value;
@@ -96,7 +96,8 @@ document.getElementById("teamName").value="";
 
 loadPlayers();
 
-}
+};
+
 
 async function loadPlayers(){
 
