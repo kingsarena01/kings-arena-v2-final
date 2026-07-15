@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Players Manager</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#08111f;
+    color:white;
+    padding:20px;
+}
+.box{
+    max-width:500px;
+    margin:auto;
+}
+h1{
+    color:#00d8ff;
+    text-align:center;
+}
+input{
+    width:100%;
+    padding:14px;
+    margin:10px 0;
+    border:none;
+    border-radius:10px;
+    font-size:16px;
+}
+button{
+    width:100%;
+    padding:15px;
+    margin-top:10px;
+    border:none;
+    border-radius:10px;
+    background:#00d8ff;
+    color:black;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+}
+#playerList{
+    margin-top:25px;
+}
+.player{
+    background:#16284a;
+    padding:12px;
+    border-radius:10px;
+    margin-bottom:10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+
+<h1>👥 Player Manager</h1>
+
+<input id="playerName" placeholder="Player Name">
+<input id="teamName" placeholder="Team Name">
+
+<button onclick="addPlayer()">Add Player</button>
+
+<div id="playerList"></div>
+
+</div>
+
+<script>
+function addPlayer(){
+
+let player=document.getElementById("playerName").value;
+let team=document.getElementById("teamName").value;
+
+if(player==""||team==""){
+alert("Fill all fields");
+return;
+}
+
+document.getElementById("playerList").innerHTML +=
+"<div class='player'><b>"+player+"</b><br>"+team+"</div>";
+
+document.getElementById("playerName").value="";
+document.getElementById("teamName").value="";
+}
+</script>
+
+</body>
+  </html>
