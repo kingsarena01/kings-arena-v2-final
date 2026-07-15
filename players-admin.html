@@ -108,12 +108,12 @@ const querySnapshot=await getDocs(collection(db,"players"));
 
 querySnapshot.forEach((doc)=>{
 
-const data=doc.data();
+const data = doc.data();
 
-list.innerHTML+=`
+list.innerHTML += `
 <div class="player">
-<b>${data.name}</b><br>
-${data.team}
+<b>${data.playerName || data.name}</b><br>
+${data.teamName || data.team}
 </div>
 `;
 
