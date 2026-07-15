@@ -68,24 +68,60 @@ button{
 
 </div>
 
-<script>
-function addPlayer(){
+<script type="module">
+import { db } from "./firebase-config.js";
+import {
+collection,
+addDoc,
+getDocs
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-let player=document.getElementById("playerName").value;
-let team=document.getElementById("teamName").value;
+window.addPlayer = async function () {
 
-if(player==""||team==""){
+const player=document.getElementById("playerName").value;
+const team=document.getElementById("teamName").value;
+
+if(player=="" || team==""){
 alert("Fill all fields");
 return;
 }
 
-document.getElementById("playerList").innerHTML +=
-"<div class='player'><b>"+player+"</b><br>"+team+"</div>";
+await addDoc(collection(db,"players"),{
+name:player,
+team:team
+});
 
 document.getElementById("playerName").value="";
 document.getElementById("teamName").value="";
+
+loadPlayers();
+
 }
-</script>
+
+async function loadPlayers(){
+
+const list=document.getElementById("playerList");
+list.innerHTML="";
+
+const querySnapshot=await getDocs(collection(db,"players"));
+
+querySnapshot.forEach((doc)=>{
+
+const data=doc.data();
+
+list.innerHTML+=`
+<div class="player">
+<b>${data.name}</b><br>
+${data.team}
+</div>
+`;
+
+});
+
+}
+
+loadPlayers();
+    </script>
 
 </body>
   </html>
