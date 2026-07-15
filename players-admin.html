@@ -62,6 +62,23 @@ button{
 <input id="playerName" placeholder="Player Name">
 <input id="teamName" placeholder="Team Name">
 
+<select id="season">
+  <option value="Season 31">Season 31</option>
+</select>
+
+<select id="group">
+  <option>A</option>
+  <option>B</option>
+  <option>C</option>
+  <option>D</option>
+  <option>E</option>
+  <option>F</option>
+  <option>G</option>
+  <option>H</option>
+</select>
+
+<input id="telegram" placeholder="Telegram Username">
+
 <button onclick="addPlayer()">Add Player</button>
 
 <div id="playerList"></div>
@@ -79,16 +96,21 @@ getDocs
 window.addPlayer = async function () {
 
 const player=document.getElementById("playerName").value;
-const team=document.getElementById("teamName").value;
-
+const team = document.getElementById("teamName").value;
+const season = document.getElementById("season").value;
+const group = document.getElementById("group").value;
+const telegram = document.getElementById("telegram").value;
 if(player=="" || team==""){
 alert("Fill all fields");
 return;
 }
 
 await addDoc(collection(db,"players"),{
-name:player,
-team:team
+  playerName: player,
+  teamName: team,
+  season: season,
+  group: group,
+  telegram: telegram
 });
 
 document.getElementById("playerName").value="";
