@@ -50,6 +50,13 @@ button{
     border-radius:10px;
     margin-bottom:10px;
 }
+    .player-photo{
+    width:80px;
+    height:80px;
+    border-radius:50%;
+    object-fit:cover;
+    margin-bottom:10px;
+    }
 </style>
 </head>
 
@@ -78,7 +85,7 @@ button{
 </select>
 
 <input id="telegram" placeholder="Telegram Username">
-
+<input type="file" id="photo" accept="image/*">
 <button onclick="addPlayer()">Add Player</button>
 
 <div id="playerList"></div>
@@ -89,10 +96,17 @@ button{
 <script type="module">
 import { db } from "./firebase-config.js";
 import {
+  getStorage,
+  ref,
+  uploadBytes,
+  getDownloadURL
+} from "https://www.gstatic.com/firebasejs/11.0.2/firebase-storage.js";
+import {
 collection,
 addDoc,
 getDocs
 } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
+const storage = getStorage();
 window.addPlayer = async function () {
 
 const player=document.getElementById("playerName").value;
@@ -100,17 +114,27 @@ const team = document.getElementById("teamName").value;
 const season = document.getElementById("season").value;
 const group = document.getElementById("group").value;
 const telegram = document.getElementById("telegram").value;
+    const file = document.getElementById("photo").files[0];
+
+let photoUrl = "";
+
+if (file) {
+  const storageRef = ref(storage, "players/" + Date.now() + "_" + file.name);
+  await uploadBytes(storageRef, file);
+  photoUrl = await getDownloadURL(storageRef);
+    }
 if(player=="" || team==""){
 alert("Fill all fields");
 return;
 }
 
 await addDoc(collection(db,"players"),{
-  playerName: player,
-  teamName: team,
-  season: season,
-  group: group,
-  telegram: telegram
+    playerName: player,
+    teamName: team,
+    season: season,
+    group: group,
+    telegram: telegram,
+    photoUrl: photoUrl
 });
 
 document.getElementById("playerName").value="";
@@ -130,9 +154,10 @@ const querySnapshot=await getDocs(collection(db,"players"));
 
 querySnapshot.forEach((doc)=>{
     const data = doc.data();
-
+    
     list.innerHTML += `
     <div class="player">
+    ${data.photoUrl ? `<img src="${data.photoUrl}" class="player-photo">` : ""}
         <b>${data.playerName}</b><br>
         ⚽ ${data.teamName}<br>
         🏆 ${data.season}<br>
