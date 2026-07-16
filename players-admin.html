@@ -94,7 +94,7 @@ button{
 
 </script>
 <script type="module">
-import { db } from "./firebase-config.js";
+import { db, app } from "./firebase-config.js";
 import {
   getStorage,
   ref,
@@ -106,7 +106,7 @@ collection,
 addDoc,
 getDocs
 } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
-const storage = getStorage();
+const storage = getStorage(app);
 window.addPlayer = async function () {
 
 const player=document.getElementById("playerName").value;
