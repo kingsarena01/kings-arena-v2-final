@@ -48,8 +48,25 @@ snapshot.forEach((doc) => {
 players.sort(() => Math.random() - 0.5);
 
 // Show Groups
-document.getElementById("groupA").innerHTML = players[0] ? players[0].playerName : "";
-document.getElementById("groupB").innerHTML = players[1] ? players[1].playerName : "";
-document.getElementById("groupC").innerHTML = players[2] ? players[2].playerName : "";
-document.getElementById("groupD").innerHTML = players[3] ? players[3].playerName : "";
+
+const groups = ["A", "B", "C", "D", "E", "F", "G", "H"];
+
+// Clear all groups
+groups.forEach(group => {
+    document.getElementById("group" + group).innerHTML = "";
+});
+
+// Put players into groups (4 players per group)
+players.forEach((player, index) => {
+
+    const groupIndex = Math.floor(index / 4);
+
+    if (groupIndex < groups.length) {
+
+        document.getElementById("group" + groups[groupIndex]).innerHTML +=
+            "<div>" + player.playerName + "</div>";
+
+    }
+
+});
 });
