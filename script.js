@@ -28,3 +28,8 @@ async function loadTournament() {
 }
 
 loadTournament();
+const autoDrawBtn = document.getElementById("autoDrawBtn");
+
+autoDrawBtn.addEventListener("click", () => {
+    alert("Auto Draw Clicked");
+});
