@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Tournament Management</title>
+
+<style>
+
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#08111f;
+    color:white;
+}
+
+.header{
+    background:#16284a;
+    padding:20px;
+    text-align:center;
+}
+
+.header h1{
+    color:#00d8ff;
+    margin:0;
+}
+
+.container{
+    padding:20px;
+}
+
+.card{
+    background:#16284a;
+    border-radius:15px;
+    padding:20px;
+    margin-bottom:20px;
+}
+
+.card h2{
+    color:#00d8ff;
+    margin-top:0;
+}
+
+input,
+select{
+    width:100%;
+    padding:12px;
+    margin-top:8px;
+    margin-bottom:15px;
+    border-radius:8px;
+    border:none;
+}
+
+button{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:10px;
+    background:#00d8ff;
+    color:black;
+    font-size:18px;
+    font-weight:bold;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+<h1>🏆 Tournament</h1>
+<p>Tournament Management</p>
+</div>
+
+<div class="container">
+
+<div class="card">
+
+<h2>Season Settings</h2>
+
+<label>Tournament Name</label>
+<input type="text" placeholder="King's Arena">
+
+<label>Season</label>
+<input type="text" placeholder="Season 31">
+
+<label>Teams</label>
+<input type="number" value="32">
+
+<label>Groups</label>
+<input type="number" value="8">
+
+<label>Status</label>
+<select>
+<option>Registration</option>
+<option>Group Stage</option>
+<option>Knockout</option>
+<option>Finished</option>
+</select>
+
+<button>Save Tournament</button>
+
+</div>
+
+</div>
+
+</body>
+</html>
