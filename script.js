@@ -4,7 +4,7 @@ console.log("King's Arena Website Loaded");
 console.log("Group Draw Loaded");
 const tournamentSelect = document.getElementById("tournamentSelect");
 async function loadTournaments() {
-    const snapshot = await getDocs(collection(db, "tournaments"));
+    const snapshot = await getDocs(collection(db, "tournament"));
 
     snapshot.forEach((doc) => {
         const option = document.createElement("option");
