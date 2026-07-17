@@ -99,7 +99,9 @@ import { db } from "./firebase-config.js";
 import {
   collection,
   addDoc,
-  getDocs
+  getDocs,
+  deleteDoc,
+  doc
 } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
 
 window.addPlayer = async function () {
@@ -150,6 +152,7 @@ document.getElementById("teamName").value="";
 
 loadPlayers();
 
+
 };
 
 
@@ -161,7 +164,8 @@ list.innerHTML="";
 const querySnapshot=await getDocs(collection(db,"players"));
 
 querySnapshot.forEach((doc)=>{
-    const data = doc.data();
+const id = doc.id;
+const data = doc.data();
     
     list.innerHTML += `
     <div class="player">
@@ -171,12 +175,25 @@ querySnapshot.forEach((doc)=>{
         🏆 ${data.season}<br>
         🅰️ Group ${data.group}<br>
         💬 ${data.telegram}
+        <br>
+
+<button onclick="deletePlayer('${id}')">
+🗑 Delete
+</button>
     </div>
     `;
 });
 
 }
+window.deletePlayer = async function(id){
 
+    if(!confirm("Delete this player?")) return;
+
+    await deleteDoc(doc(db, "players", id));
+
+    loadPlayers();
+
+}
 loadPlayers();
     </script>
 
