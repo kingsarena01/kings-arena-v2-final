@@ -5,7 +5,13 @@ console.log("Group Draw Loaded");
 const tournamentSelect = document.getElementById("tournamentSelect");
 async function loadTournaments() {
     const snapshot = await getDocs(collection(db, "tournaments"));
-    console.log(snapshot);
+
+    snapshot.forEach((doc) => {
+        const option = document.createElement("option");
+        option.value = doc.id;
+        option.textContent = doc.data().name;
+        tournamentSelect.appendChild(option);
+    });
 }
 
 loadTournaments();
