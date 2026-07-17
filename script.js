@@ -3,9 +3,9 @@ import {
   doc,
   getDoc,
   collection,
-  getDocs
+  getDocs,
+  setDoc
 } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
-
 const tournamentSelect = document.getElementById("tournamentSelect");
 
 async function loadTournament() {
@@ -33,6 +33,8 @@ async function loadTournament() {
 }
 
 loadTournament();
+
+const saveBtn = document.getElementById("saveBtn");
 const autoDrawBtn = document.getElementById("autoDrawBtn");
 
 autoDrawBtn.addEventListener("click", async () => {
@@ -69,4 +71,20 @@ players.forEach((player, index) => {
     }
 
 });
+});
+saveBtn.addEventListener("click", async () => {
+
+  await setDoc(doc(db, "groupDraw", "current"), {
+    groupA: document.getElementById("groupA").innerHTML,
+    groupB: document.getElementById("groupB").innerHTML,
+    groupC: document.getElementById("groupC").innerHTML,
+    groupD: document.getElementById("groupD").innerHTML,
+    groupE: document.getElementById("groupE").innerHTML,
+    groupF: document.getElementById("groupF").innerHTML,
+    groupG: document.getElementById("groupG").innerHTML,
+    groupH: document.getElementById("groupH").innerHTML
+  });
+
+  alert("Group Draw Saved!");
+
 });
