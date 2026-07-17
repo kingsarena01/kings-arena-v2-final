@@ -88,3 +88,22 @@ saveBtn.addEventListener("click", async () => {
   alert("Group Draw Saved!");
 
 });
+async function loadSavedGroups() {
+
+  const snap = await getDoc(doc(db, "groupDraw", "current"));
+
+  if (!snap.exists()) return;
+
+  const data = snap.data();
+
+  document.getElementById("groupA").innerHTML = data.groupA || "";
+  document.getElementById("groupB").innerHTML = data.groupB || "";
+  document.getElementById("groupC").innerHTML = data.groupC || "";
+  document.getElementById("groupD").innerHTML = data.groupD || "";
+  document.getElementById("groupE").innerHTML = data.groupE || "";
+  document.getElementById("groupF").innerHTML = data.groupF || "";
+  document.getElementById("groupG").innerHTML = data.groupG || "";
+  document.getElementById("groupH").innerHTML = data.groupH || "";
+
+}
+loadSavedGroups();
