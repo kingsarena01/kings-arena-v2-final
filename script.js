@@ -1,5 +1,10 @@
 import { db } from "./firebase-config.js";
-import { doc, getDoc } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
+import {
+  doc,
+  getDoc,
+  collection,
+  getDocs
+} from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
 
 const tournamentSelect = document.getElementById("tournamentSelect");
 
@@ -30,6 +35,14 @@ async function loadTournament() {
 loadTournament();
 const autoDrawBtn = document.getElementById("autoDrawBtn");
 
-autoDrawBtn.addEventListener("click", () => {
-    alert("Auto Draw Clicked");
+autoDrawBtn.addEventListener("click", async () => {
+    const players = [];
+
+const snapshot = await getDocs(collection(db, "players"));
+
+snapshot.forEach((doc) => {
+    players.push(doc.data());
+});
+
+alert("Players Loaded: " + players.length);
 });
