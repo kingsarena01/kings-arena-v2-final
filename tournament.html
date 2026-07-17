@@ -114,8 +114,9 @@ button{
 import { db } from "./firebase-config.js";
 
 import {
-  doc,
-  setDoc
+    doc,
+    setDoc,
+    getDoc
 } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
 const tournamentName = document.getElementById("tournamentName");
 const season = document.getElementById("season");
@@ -125,16 +126,29 @@ const status = document.getElementById("status");
 const saveTournament = document.getElementById("saveTournament");
 saveTournament.addEventListener("click", async () => {
 
-    await setDoc(doc(db, "tournament", "current"), {
-        tournamentName: tournamentName.value,
-        season: season.value,
-        teams: Number(teams.value),
-        groups: Number(groups.value),
-        status: status.value
-    });
-
-    alert("Tournament Saved Successfully!");
+await setDoc(doc(db, "tournament", "current"), {
+    tournamentName: tournamentName.value,
+    season: season.value,
+    teams: Number(teams.value),
+    groups: Number(groups.value),
+    status: status.value
 });
+    alert("Tournament Saved Successfully!");
+
+});
+
+const snapshot = await getDoc(doc(db, "tournament", "current"));
+
+if (snapshot.exists()) {
+    const data = snapshot.data();
+
+    tournamentName.value = data.tournamentName;
+    season.value = data.season;
+    teams.value = data.teams;
+    groups.value = data.groups;
+    status.value = data.status;
+}
+
 </script>
 
 </body>
