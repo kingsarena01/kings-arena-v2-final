@@ -48,40 +48,7 @@
   <a href="admin.html">ADMIN</a>
 </div>
 
-<section class="hero">
 
-<h2>Player Registration</h2>
-
-<div class="card">
-
-<form id="registerForm">
-
-<input type="text" id="playerName"
-placeholder="Player Name" required>
-
-<br><br>
-
-<input type="text" id="teamName"
-placeholder="Team Name" required>
-
-<br><br>
-
-<input type="text" id="telegram"
-placeholder="Telegram Username" required>
-
-<br><br>
-
-<button type="submit" class="join-btn">
-Register
-</button>
-
-</form>
-
-<p id="status"></p>
-
-</div>
-
-</section>
 <section class="menu-grid">
   <a href="players.html" class="card">
     <i class="fa-solid fa-users"></i>
@@ -164,35 +131,7 @@ Register
 <script type="module" src="firebase-config.js"></script>
 <script type="module">
 
-import { db } from "./firebase-config.js";
 
-import {
-  collection,
-  addDoc
-} from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
-
-const form = document.getElementById("registerForm");
-const status = document.getElementById("status");
-
-form.addEventListener("submit", async (e) => {
-  e.preventDefault();
-
-  try {
-
-    await addDoc(collection(db, "players"), {
-      playerName: document.getElementById("playerName").value,
-      teamName: document.getElementById("teamName").value,
-      telegram: document.getElementById("telegram").value
-    });
-
-    status.innerHTML = "✅ Registration Successful!";
-    form.reset();
-
-  } catch (err) {
-    status.innerHTML = "❌ " + err.message;
-  }
-
-});
 
     </script>
 <script src="script.js"></script>
