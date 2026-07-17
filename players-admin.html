@@ -57,6 +57,14 @@ button{
     object-fit:cover;
     margin-bottom:10px;
     }
+    .delete-btn{
+    background:#e53935;
+    color:white;
+}
+
+.delete-btn:hover{
+    background:#c62828;
+}
 </style>
 </head>
 
@@ -177,7 +185,7 @@ const data = doc.data();
         💬 ${data.telegram}
         <br>
 
-<button onclick="deletePlayer('${id}')">
+<button class="delete-btn" onclick="deletePlayer('${id}')">
 🗑 Delete
 </button>
     </div>
