@@ -94,7 +94,13 @@ button{
 
 </script>
 <script type="module">
-import { db, app } from "./firebase-config.js";
+import { db } from "./firebase-config.js";
+
+import {
+  collection,
+  addDoc,
+  getDocs
+} from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
 
 window.addPlayer = async function () {
 
