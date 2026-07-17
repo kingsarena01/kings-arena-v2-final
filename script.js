@@ -4,19 +4,26 @@ import { doc, getDoc } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-
 const tournamentSelect = document.getElementById("tournamentSelect");
 
 async function loadTournament() {
-    tournamentSelect.innerHTML =
-        '<option value="">Select Tournament</option>';
+    try {
 
-    const snap = await getDoc(doc(db, "tournament", "current"));
+        tournamentSelect.innerHTML =
+            '<option value="">Select Tournament</option>';
 
-    if (snap.exists()) {
-        const data = snap.data();
+        const snap = await getDoc(doc(db, "tournament", "current"));
 
-        const option = document.createElement("option");
-        option.value = "current";
-        option.textContent = data.tournamentName;
+        if (snap.exists()) {
+            const data = snap.data();
 
-        tournamentSelect.appendChild(option);
+            const option = document.createElement("option");
+            option.value = "current";
+            option.textContent = data.tournamentName;
+
+            tournamentSelect.appendChild(option);
+        }
+
+    } catch (error) {
+        console.error(error);
+        alert(error.message);
     }
 }
 
