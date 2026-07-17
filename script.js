@@ -44,5 +44,12 @@ snapshot.forEach((doc) => {
     players.push(doc.data());
 });
 
-alert("Players Loaded: " + players.length);
+// Shuffle Players
+players.sort(() => Math.random() - 0.5);
+
+// Show Groups
+document.getElementById("groupA").innerHTML = players[0] ? players[0].playerName : "";
+document.getElementById("groupB").innerHTML = players[1] ? players[1].playerName : "";
+document.getElementById("groupC").innerHTML = players[2] ? players[2].playerName : "";
+document.getElementById("groupD").innerHTML = players[3] ? players[3].playerName : "";
 });
