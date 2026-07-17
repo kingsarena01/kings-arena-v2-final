@@ -98,6 +98,35 @@ button{
 </div>
 
 </div>
+<script type="module">
+import { db } from "./firebase-config.js";
 
+import {
+  doc,
+  getDoc
+} from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
+
+// နောက်တစ်ဆင့်မှာ ဆက်ရေးမယ်
+   const snapshot = await getDoc(doc(db, "tournament", "current"));
+
+if (snapshot.exists()) {
+    const data = snapshot.data();
+
+    document.querySelector(".card h2").innerHTML =
+        "🏆 " + data.season;
+
+    document.querySelectorAll(".card p")[0].innerHTML =
+        "<strong>Format:</strong> Group Stage + Knockout";
+
+    document.querySelectorAll(".card p")[1].innerHTML =
+        "<strong>Teams:</strong> " + data.teams;
+
+    document.querySelectorAll(".card p")[2].innerHTML =
+        "<strong>Groups:</strong> " + data.groups + " (A–H)";
+
+    document.querySelectorAll(".card p")[3].innerHTML =
+        "<strong>Status:</strong> " + data.status;
+    }
+</script>
 </body>
 </html>
