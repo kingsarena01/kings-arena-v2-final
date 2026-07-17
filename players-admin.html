@@ -65,6 +65,15 @@ button{
 .delete-btn:hover{
     background:#c62828;
 }
+    .edit-btn{
+    background:#2196f3;
+    color:white;
+    margin-bottom:10px;
+}
+
+.edit-btn:hover{
+    background:#1976d2;
+}
 </style>
 </head>
 
@@ -109,9 +118,10 @@ import {
   addDoc,
   getDocs,
   deleteDoc,
+  updateDoc,
   doc
 } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
-
+let editingPlayerId = null;
 window.addPlayer = async function () {
 
 const player=document.getElementById("playerName").value;
@@ -146,18 +156,39 @@ alert("Fill all fields");
 return;
 }
 
-await addDoc(collection(db,"players"),{
+if (editingPlayerId) {
+
+  await updateDoc(doc(db, "players", editingPlayerId), {
+    playerName: player,
+    teamName: team,
+    season: season,
+    group: group,
+    telegram: telegram,
+    photoUrl: photoUrl || ""
+  });
+
+  editingPlayerId = null;
+  document.querySelector("button").innerText = "Add Player";
+
+} else {
+
+  await addDoc(collection(db, "players"), {
     playerName: player,
     teamName: team,
     season: season,
     group: group,
     telegram: telegram,
     photoUrl: photoUrl
-});
+  });
+
+      }
 
 document.getElementById("playerName").value="";
 document.getElementById("teamName").value="";
-
+document.getElementById("telegram").value = "";
+document.getElementById("photo").value = "";
+document.getElementById("season").value = "Season 31";
+document.getElementById("group").value = "A";
 loadPlayers();
 
 
@@ -185,6 +216,10 @@ const data = doc.data();
         💬 ${data.telegram}
         <br>
 
+<button class="edit-btn" onclick="editPlayer('${id}')">
+✏️ Edit
+</button>
+
 <button class="delete-btn" onclick="deletePlayer('${id}')">
 🗑 Delete
 </button>
@@ -193,6 +228,28 @@ const data = doc.data();
 });
 
 }
+window.editPlayer = async function(id){
+
+  editingPlayerId = id;
+
+  const snapshot = await getDocs(collection(db,"players"));
+
+  snapshot.forEach((docSnap)=>{
+    if(docSnap.id===id){
+
+      const data = docSnap.data();
+
+      document.getElementById("playerName").value = data.playerName;
+      document.getElementById("teamName").value = data.teamName;
+      document.getElementById("season").value = data.season;
+      document.getElementById("group").value = data.group;
+      document.getElementById("telegram").value = data.telegram;
+
+      document.querySelector("button").innerText = "Update Player";
+    }
+  });
+
+    }   
 window.deletePlayer = async function(id){
 
     if(!confirm("Delete this player?")) return;
