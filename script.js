@@ -9,7 +9,7 @@ async function loadTournaments() {
     snapshot.forEach((doc) => {
         const option = document.createElement("option");
         option.value = doc.id;
-        option.textContent = doc.data().name;
+        option.textContent = doc.data().tournamentName;
         tournamentSelect.appendChild(option);
     });
 }
