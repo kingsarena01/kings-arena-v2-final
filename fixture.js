@@ -75,6 +75,5 @@ await setDoc(doc(db, "fixtures", "current"), {
     matches: fixtures
 });
 
-status.innerHTML = "Round 1 Fixtures Generated Successfully!";
-
+status.innerHTML = "Round 1, Round 2 & Round 3 Fixtures Generated Successfully!";
 });
