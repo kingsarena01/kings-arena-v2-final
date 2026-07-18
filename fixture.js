@@ -9,7 +9,13 @@ import {
 const generateBtn = document.getElementById("generateBtn");
 const status = document.getElementById("status");
 const fixtureList = document.getElementById("fixtureList");
-generateBtn.addEventListener("click", async () => {
+if (generateBtn) {
+    generateBtn.addEventListener("click", async () => {
+
+        // Generate Fixtures Code
+
+    });
+}
 
   const snap = await getDoc(doc(db, "groupDraw", "current"));
 
