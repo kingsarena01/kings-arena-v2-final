@@ -1,12 +1,13 @@
-import { db } from "./firebase-config.js";
 import {
   doc,
   getDoc,
-  setDoc
+  setDoc,
+  collection,
+  getDocs
 } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
 const generateBtn = document.getElementById("generateBtn");
 const status = document.getElementById("status");
-
+const fixtureList = document.getElementById("fixtureList");
 generateBtn.addEventListener("click", async () => {
 
   const snap = await getDoc(doc(db, "groupDraw", "current"));
