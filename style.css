@@ -174,3 +174,55 @@ a{
   background:#fff;
   color:#111;
 }
+/* ===== Fixture Cards ===== */
+
+#fixtureList{
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+    margin-top:20px;
+}
+
+.fixture-card{
+    background:#101b33;
+    border:1px solid #1f3c6d;
+    border-radius:16px;
+    padding:16px;
+    box-shadow:0 4px 12px rgba(0,0,0,.25);
+}
+
+.fixture-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    color:#00d4ff;
+    font-weight:bold;
+    margin-bottom:14px;
+}
+
+.fixture-body{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-size:18px;
+    font-weight:bold;
+}
+
+.fixture-body div{
+    flex:1;
+}
+
+.fixture-body div:first-child{
+    text-align:left;
+}
+
+.fixture-body div:last-child{
+    text-align:right;
+}
+
+.vs{
+    flex:0;
+    padding:0 15px;
+    color:#ffd700;
+    font-weight:bold;
+    }
