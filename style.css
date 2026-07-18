@@ -1,3 +1,47 @@
+/* =====================================================
+   KING'S ARENA DESIGN SYSTEM v1.0
+===================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Orbitron:wght@600;700;800&family=Rajdhani:wght@500;600;700&display=swap');
+:root{
+
+  /* ===== Colors ===== */
+
+  --bg:#0A1020;
+  --surface:#16284B;
+  --surface-hover:#1D3461;
+
+  --primary:#00D4FF;
+  --secondary:#7B61FF;
+
+  --success:#00E676;
+  --warning:#FFC107;
+  --danger:#FF3B30;
+
+  --text:#FFFFFF;
+  --text-secondary:#B7C4DD;
+
+  --border:#27456E;
+
+  /* ===== Radius ===== */
+
+  --radius-sm:12px;
+  --radius-md:16px;
+  --radius-lg:20px;
+  --radius-xl:28px;
+
+  /* ===== Shadow ===== */
+
+  --shadow:
+  0 8px 24px rgba(0,0,0,.35);
+
+  --glow:
+  0 0 18px rgba(0,212,255,.25);
+
+  /* ===== Transition ===== */
+
+  --transition:.30s ease;
+
+}
 *{
     margin:0;
     padding:0;
@@ -5,12 +49,11 @@
 }
 
 body{
-    background:#0b1220;
-    color:#ffffff;
-    font-family:Arial, Helvetica, sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter', sans-serif;
     padding-bottom:90px;
 }
-
 a{
     text-decoration:none;
 }
@@ -34,9 +77,10 @@ a{
 }
 
 .logo h1{
-    color:#00d4ff;
+    color:var(--primary);
     font-size:34px;
-    font-weight:bold;
+    font-family:'Orbitron', sans-serif;
+    font-weight:700;
 }
 
 .subtitle{
@@ -62,8 +106,10 @@ a{
 
 .hero h2{
     margin-top:15px;
-    color:white;
-    font-size:22px;
+    color:var(--text);
+    font-family:'Rajdhani', sans-serif;
+    font-size:24px;
+    font-weight:700;
 }
 
 .join-btn{
