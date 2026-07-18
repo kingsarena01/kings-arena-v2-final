@@ -78,14 +78,15 @@ a{
     display:flex;
     justify-content:center;
     align-items:center;
-    gap:12px;
+    gap:16px;
 }
 
 .logo i{
-    color:#00d4ff;
-    font-size:34px;
+    color:var(--primary);
+    font-size:44px;
+    filter:drop-shadow(0 0 10px rgba(0,212,255,.35));
+    transition:var(--transition);
 }
-
 .logo h1{
     color:var(--primary);
     font-size:34px;
