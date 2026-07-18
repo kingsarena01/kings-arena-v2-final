@@ -79,7 +79,7 @@ await setDoc(doc(db, "fixtures", "current"), {
 
 status.innerHTML = "Round 1, Round 2 & Round 3 Fixtures Generated Successfully!";
 });
-async function loadFixtures() {
+async function loadFixtures(round = "all") {
   const snap = await getDoc(doc(db, "fixtures", "current"));
 
   if (!snap.exists()) {
@@ -93,6 +93,11 @@ async function loadFixtures() {
   fixtureList.innerHTML = "";
 
   matches.forEach(match => {
+
+if (round !== "all" && match.round !== Number(round)) {
+    return;
+}
+    
     fixtureList.innerHTML += `
       <div class="fixture-card">
         <div class="fixture-top">
@@ -109,5 +114,17 @@ async function loadFixtures() {
     `;
   });
 }
+const filterButtons = document.querySelectorAll(".mode-switch a");
 
+filterButtons.forEach(btn => {
+    btn.addEventListener("click", e => {
+        e.preventDefault();
+
+        filterButtons.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+
+        const round = btn.dataset.round;
+        loadFixtures(round);
+    });
+});
 loadFixtures();
