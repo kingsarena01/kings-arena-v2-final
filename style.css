@@ -180,19 +180,41 @@ a{
 }
 
 .card{
-    background:#16284b;
-    border:2px solid #1f3c6d;
-    border-radius:18px;
-    padding:28px 15px;
+    position:relative;
+
+    background:linear-gradient(
+        180deg,
+        #1b2d56 0%,
+        #16284b 100%
+    );
+
+    border:2px solid #27456e;
+
+    border-radius:22px;
+
+    padding:32px 18px;
+
     text-align:center;
-    transition:.3s;
+
+    overflow:hidden;
+
+    transition:var(--transition);
+
+    box-shadow:
+        0 10px 28px rgba(0,0,0,.30);
 }
 
 .card:hover{
-    transform:translateY(-5px);
-    border-color:#00d4ff;
-}
 
+    transform:translateY(-8px);
+
+    border-color:var(--primary);
+
+    box-shadow:
+        0 0 22px rgba(0,212,255,.22),
+        0 16px 36px rgba(0,0,0,.35);
+
+}
 .card i{
     font-size:38px;
     color:#00d4ff;
