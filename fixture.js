@@ -79,3 +79,35 @@ await setDoc(doc(db, "fixtures", "current"), {
 
 status.innerHTML = "Round 1, Round 2 & Round 3 Fixtures Generated Successfully!";
 });
+async function loadFixtures() {
+  const snap = await getDoc(doc(db, "fixtures", "current"));
+
+  if (!snap.exists()) {
+    fixtureList.innerHTML = "<p>No Fixtures Found</p>";
+    return;
+  }
+
+  const data = snap.data();
+  const matches = data.matches;
+
+  fixtureList.innerHTML = "";
+
+  matches.forEach(match => {
+    fixtureList.innerHTML += `
+      <div class="fixture-card">
+        <div class="fixture-top">
+          <span>${match.group}</span>
+          <span>Round ${match.round}</span>
+        </div>
+
+        <div class="fixture-body">
+          <div>${match.home}</div>
+          <div class="vs">VS</div>
+          <div>${match.away}</div>
+        </div>
+      </div>
+    `;
+  });
+}
+
+loadFixtures();
