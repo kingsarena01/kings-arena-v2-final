@@ -102,11 +102,26 @@ a{
 
 .hero{
     width:92%;
-    margin:25px auto;
-    background:#16284b;
-    border-radius:20px;
-    padding:30px 20px;
+    margin:30px auto;
+
+    padding:36px 24px;
+
     text-align:center;
+
+    background:
+    linear-gradient(
+        180deg,
+        var(--surface) 0%,
+        #1A315D 100%
+    );
+
+    border:1px solid var(--border);
+
+    border-radius:var(--radius-lg);
+
+    box-shadow:
+    var(--shadow),
+    var(--glow);
 }
 
 .season{
