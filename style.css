@@ -334,3 +334,54 @@ a{
     color:#ffd700;
     font-weight:bold;
     }
+.fixture-card{
+    background:linear-gradient(180deg,#17284b,#0f1b33);
+    border:1px solid #27508a;
+    border-radius:22px;
+    padding:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,.35);
+    transition:.3s;
+}
+
+.fixture-card:hover{
+    transform:translateY(-4px);
+    border-color:#00d4ff;
+}
+
+.fixture-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:18px;
+    color:#00d4ff;
+    font-weight:bold;
+}
+
+.fixture-body{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.team{
+    flex:1;
+    font-size:18px;
+    font-weight:700;
+    color:#fff;
+}
+
+.team:first-child{
+    text-align:left;
+}
+
+.team:last-child{
+    text-align:right;
+}
+
+.vs{
+    width:70px;
+    text-align:center;
+    font-size:22px;
+    font-weight:800;
+    color:#FFC107;
+}
