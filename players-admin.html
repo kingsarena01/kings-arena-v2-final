@@ -103,6 +103,8 @@ button{
 
 <input id="telegram" placeholder="Telegram Username">
 <input type="file" id="photo" accept="image/*">
+<label>Team Logo</label>
+<input type="file" id="teamLogo" accept="image/*">
 <button onclick="addPlayer()">Add Player</button>
 
 <div id="playerList"></div>
@@ -130,9 +132,9 @@ const season = document.getElementById("season").value;
 const group = document.getElementById("group").value;
 const telegram = document.getElementById("telegram").value;
     const file = document.getElementById("photo").files[0];
-
+const logoFile = document.getElementById("teamLogo").files[0];
 let photoUrl = "";
-
+let teamLogoUrl = "";
 if (file) {
   const formData = new FormData();
   formData.append("file", file);
@@ -151,6 +153,22 @@ if (file) {
 // alert(JSON.stringify(result));
   photoUrl = result.secure_url;
     }
+if (logoFile) {
+    const formData = new FormData();
+    formData.append("file", logoFile);
+    formData.append("upload_preset", "kings-arena-upload");
+
+    const response = await fetch(
+        "https://api.cloudinary.com/v1_1/fb58qrjc/image/upload",
+        {
+            method: "POST",
+            body: formData
+        }
+    );
+
+    const result = await response.json();
+    teamLogoUrl = result.secure_url;
+}
 if(player=="" || team==""){
 alert("Fill all fields");
 return;
@@ -164,7 +182,8 @@ if (editingPlayerId) {
     season: season,
     group: group,
     telegram: telegram,
-    photoUrl: photoUrl || ""
+    photoUrl: photoUrl || "",
+teamLogoUrl: teamLogoUrl || ""
   });
 
   editingPlayerId = null;
@@ -178,7 +197,8 @@ if (editingPlayerId) {
     season: season,
     group: group,
     telegram: telegram,
-    photoUrl: photoUrl
+    photoUrl: photoUrl,
+teamLogoUrl: teamLogoUrl
   });
 
       }
