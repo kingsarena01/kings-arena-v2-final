@@ -229,7 +229,10 @@ const data = doc.data();
     
     list.innerHTML += `
     <div class="player">
-    ${data.photoUrl ? `<img src="${data.photoUrl}" class="player-photo">` : ""}
+<div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
+    ${data.teamLogoUrl ? `<img src="${data.teamLogoUrl}" style="width:50px;height:50px;object-fit:contain;border-radius:10px;background:white;padding:4px;">` : ""}
+    ${data.photoUrl ? `<img src="${data.photoUrl}" class="player-photo" style="margin-bottom:0;">` : ""}
+</div>
         <b>${data.playerName}</b><br>
         ⚽ ${data.teamName}<br>
         🏆 ${data.season}<br>
