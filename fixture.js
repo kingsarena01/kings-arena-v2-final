@@ -129,31 +129,35 @@ async function loadFixtures(round = "all") {
         }
 
         fixtureList.innerHTML += `
-            <div class="fixture-card">
+<div class="fixture-card">
 
-                <div class="fixture-top">
-                    <span>${match.group}</span>
-                    <span>Round ${match.round}</span>
-                </div>
+    <div class="fixture-top">
+        <span>${match.group}</span>
+        <span>Round ${match.round}</span>
+    </div>
 
-                <div class="fixture-body">
+    <div class="fixture-body">
 
-                    <div class="team">
-                        ${match.home}
-                    </div>
+        <div class="team">
+            <div class="player-photo"></div>
+            <div class="player-name">${match.home.playerName}</div>
+            <div class="team-name">${match.home.teamName}</div>
+        </div>
 
-                    <div class="vs">
-                        VS
-                    </div>
+        <div class="vs">
+            VS
+        </div>
 
-                    <div class="team">
-                        ${match.away}
-                    </div>
+        <div class="team">
+            <div class="player-photo"></div>
+            <div class="player-name">${match.away.playerName}</div>
+            <div class="team-name">${match.away.teamName}</div>
+        </div>
 
-                </div>
+    </div>
 
-            </div>
-        `;
+</div>
+`;
     });
 
 }
