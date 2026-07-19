@@ -139,7 +139,10 @@ async function loadFixtures(round = "all") {
     <div class="fixture-body">
 
         <div class="team">
-            <div class="player-photo"></div>
+            <div class="player-photo">
+  <img src="${match.home.photoUrl || 'images/default-player.png'}" alt="${match.home.playerName}">
+  <img class="team-logo" src="${match.home.teamLogoUrl || 'images/default-team.png'}" alt="${match.home.teamName}">
+</div>
             <div class="player-name">${match.home.playerName}</div>
             <div class="team-name">${match.home.teamName}</div>
         </div>
@@ -149,7 +152,10 @@ async function loadFixtures(round = "all") {
         </div>
 
         <div class="team">
-            <div class="player-photo"></div>
+            <div class="player-photo">
+  <img src="${match.away.photoUrl || 'images/default-player.png'}" alt="${match.away.playerName}">
+  <img class="team-logo" src="${match.away.teamLogoUrl || 'images/default-team.png'}" alt="${match.away.teamName}">
+</div>
             <div class="player-name">${match.away.playerName}</div>
             <div class="team-name">${match.away.teamName}</div>
         </div>
