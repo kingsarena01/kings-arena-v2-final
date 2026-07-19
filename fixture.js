@@ -47,50 +47,49 @@ generateBtn.addEventListener("click", async () => {
         if (players.length !== 4) continue;
 
         // Round 1
-        fixtures.push({
-            group: groupName,
-            round: 1,
-            home: players[0],
-            away: players[1]
-        });
+fixtures.push({
+    group: groupName,
+    round: 1,
+    home: players[0],
+    away: players[1]
+});
 
-        fixtures.push({
-            group: groupName,
-            round: 1,
-            home: players[2],
-            away: players[3]
-        });
+fixtures.push({
+    group: groupName,
+    round: 1,
+    home: players[2],
+    away: players[3]
+});
 
         // Round 2
-        fixtures.push({
-            group: groupName,
-            round: 2,
-            home: players[0],
-            away: players[2]
-        });
+fixtures.push({
+    group: groupName,
+    round: 2,
+    home: players[0],
+    away: players[2]
+});
 
-        fixtures.push({
-            group: groupName,
-            round: 2,
-            home: players[1],
-            away: players[3]
-        });
+fixtures.push({
+    group: groupName,
+    round: 2,
+    home: players[1],
+    away: players[3]
+});
 
-        // Round 3
-        fixtures.push({
-            group: groupName,
-            round: 3,
-            home: players[0],
-            away: players[3]
-        });
+// Round 3
+fixtures.push({
+    group: groupName,
+    round: 3,
+    home: players[0],
+    away: players[3]
+});
 
-        fixtures.push({
-            group: groupName,
-            round: 3,
-            home: players[1],
-            away: players[2]
-        });
-
+fixtures.push({
+    group: groupName,
+    round: 3,
+    home: players[1],
+    away: players[2]
+});
     }
 
     await setDoc(doc(db, "fixtures", "current"), {
