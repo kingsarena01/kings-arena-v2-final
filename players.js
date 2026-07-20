@@ -62,8 +62,11 @@ function showGroup(group){
 
 }
 
-loadPlayers();
+await loadPlayers();
 
+showGroup("A");
+
+buttons[0].classList.add("active");
 buttons.forEach(btn=>{
 
   btn.onclick=()=>{
