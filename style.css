@@ -451,3 +451,47 @@ box-shadow:0 0 15px #00d9ff;
 #players-list{
 margin-top:20px;
 }
+.player-card{
+    background:#16264a;
+    border:2px solid #00d9ff;
+    border-radius:18px;
+    padding:18px;
+    margin-bottom:18px;
+    text-align:center;
+}
+
+.player-images{
+    position:relative;
+    width:110px;
+    margin:0 auto 15px;
+}
+
+.player-photo{
+    width:100px;
+    height:100px;
+    border-radius:50%;
+    object-fit:cover;
+    border:3px solid #00d9ff;
+}
+
+.team-logo{
+    width:36px;
+    height:36px;
+    position:absolute;
+    right:0;
+    bottom:0;
+    border-radius:50%;
+    background:#fff;
+    border:2px solid #fff;
+}
+
+.telegram-btn{
+    display:block;
+    margin-top:15px;
+    padding:10px;
+    background:#00d9ff;
+    color:#081323;
+    text-decoration:none;
+    border-radius:10px;
+    font-weight:bold;
+}
