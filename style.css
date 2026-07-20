@@ -422,3 +422,32 @@ a{
     color:#9ecfff;
     margin-top:4px;
        }
+.group-buttons{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:12px;
+margin-bottom:20px;
+}
+
+.group-buttons button{
+padding:14px;
+border:2px solid #00d9ff;
+border-radius:14px;
+background:#16264a;
+color:#fff;
+font-size:16px;
+font-weight:700;
+cursor:pointer;
+transition:.3s;
+}
+
+.group-buttons button:hover,
+.group-buttons button.active{
+background:#00d9ff;
+color:#081323;
+box-shadow:0 0 15px #00d9ff;
+}
+
+#players-list{
+margin-top:20px;
+}
