@@ -89,49 +89,7 @@ Back Home
 
 </nav>
 
-<script type="module">
-
-import { db } from "./firebase-config.js";
-
-import {
-collection,
-getDocs
-} from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
-
-const list=document.getElementById("players-list");
-
-list.innerHTML="";
-
-const querySnapshot=await getDocs(collection(db,"players"));
-const allPlayers = [];
-
-querySnapshot.forEach(doc=>{
-    allPlayers.push(doc.data());
-});
-if(querySnapshot.empty){
-
-list.innerHTML="<li>No registered players yet.</li>";
-
-}else{
-
-querySnapshot.forEach((doc)=>{
-
-const p=doc.data();
-
-list.innerHTML+=`
-<li>
-<b>${p.playerName}</b><br>
-🏆 ${p.teamName}<br>
-📱 ${p.telegram}
-<hr>
-</li>
-`;
-
-});
-
-}
-
-</script>
+<script type="module" src="players.js"></script>
 
 </body>
 </html>
