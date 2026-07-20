@@ -495,3 +495,30 @@ margin-top:20px;
     border-radius:10px;
     font-weight:bold;
 }
+.match-status{
+    display:inline-block;
+    padding:6px 12px;
+    background:#00d9ff;
+    color:#081323;
+    font-size:12px;
+    font-weight:700;
+    border-radius:20px;
+    margin-bottom:10px;
+    box-shadow:0 0 12px #00d9ff;
+}
+
+.score{
+    font-size:28px;
+    font-weight:800;
+    color:#ffffff;
+    letter-spacing:2px;
+}
+
+.vs{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    min-width:100px;
+}
