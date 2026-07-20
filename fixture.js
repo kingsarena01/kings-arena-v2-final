@@ -1,8 +1,8 @@
-import { db } from "./firebase-config.js";
-
 import {
   doc,
   getDoc,
+  getDocs,
+  collection,
   setDoc
 } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
 
@@ -36,13 +36,22 @@ generateBtn.addEventListener("click", async () => {
     const groups = snap.data();
     const fixtures = [];
 
-    for (const groupName in groups) {
+const playerSnap = await getDocs(collection(db, "players"));
 
-        const players = groups[groupName]
-            .replace(/<[^>]*>/g, "\n")
-            .split("\n")
-            .map(p => p.trim())
-            .filter(p => p);
+const playersMap = {};
+
+playerSnap.forEach(doc => {
+    const p = doc.data();
+    playersMap[p.playerName.trim()] = p;
+});
+
+for (const groupName in groups) {
+
+    const players = groups[groupName]
+        .replace(/<[^>]*>/g, "\n")
+        .split("\n")
+        .map(p => p.trim())
+        .filter(p => p);
 
         if (players.length !== 4) continue;
 
@@ -50,45 +59,46 @@ generateBtn.addEventListener("click", async () => {
 fixtures.push({
     group: groupName,
     round: 1,
-    home: players[0],
-    away: players[1]
+    home: playersMap[players[0]],
+    away: playersMap[players[1]]
 });
 
 fixtures.push({
     group: groupName,
     round: 1,
-    home: players[2],
-    away: players[3]
+    home: playersMap[players[2]],
+    away: playersMap[players[3]]
 });
 
         // Round 2
 fixtures.push({
     group: groupName,
     round: 2,
-    home: players[0],
-    away: players[2]
+    home: playersMap[players[0]],
+    away: playersMap[players[2]]
+    
 });
 
 fixtures.push({
     group: groupName,
     round: 2,
-    home: players[1],
-    away: players[3]
+    home: playersMap[players[1]],
+    away: playersMap[players[3]]
 });
 
 // Round 3
 fixtures.push({
     group: groupName,
     round: 3,
-    home: players[0],
-    away: players[3]
+    home: playersMap[players[0]],
+    away: playersMap[players[3]]
 });
 
 fixtures.push({
     group: groupName,
     round: 3,
-    home: players[1],
-    away: players[2]
+    home: playersMap[players[1]],
+    away: playersMap[players[2]]
 });
     }
 
