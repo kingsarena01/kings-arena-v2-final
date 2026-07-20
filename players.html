@@ -103,7 +103,11 @@ const list=document.getElementById("players-list");
 list.innerHTML="";
 
 const querySnapshot=await getDocs(collection(db,"players"));
+const allPlayers = [];
 
+querySnapshot.forEach(doc=>{
+    allPlayers.push(doc.data());
+});
 if(querySnapshot.empty){
 
 list.innerHTML="<li>No registered players yet.</li>";
