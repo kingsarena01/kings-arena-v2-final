@@ -37,14 +37,27 @@ function showGroup(group){
   players.forEach(player=>{
 
     list.innerHTML += `
-      <div class="player-card">
-        <img class="player-photo" src="${player.photoUrl}">
-        <img class="team-logo" src="${player.teamLogoUrl}">
-        <div class="player-name">${player.playerName}</div>
-        <div class="team-name">${player.teamName}</div>
-      </div>
-    `;
+<div class="player-card">
 
+    <div class="player-images">
+        <img class="player-photo" src="${player.photoUrl}" alt="">
+        <img class="team-logo" src="${player.teamLogoUrl}" alt="">
+    </div>
+
+    <div class="player-name">${player.playerName}</div>
+
+    <div class="team-name">
+        ${player.teamName}
+    </div>
+
+    <a class="telegram-btn"
+       href="https://t.me/${player.telegram.replace("@","")}"
+       target="_blank">
+       Message on Telegram
+    </a>
+
+</div>
+`;
   });
 
 }
