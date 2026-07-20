@@ -149,9 +149,9 @@ async function loadFixtures(round = "all") {
 </div>
 
         <div class="vs">
-            VS
-        </div>
-
+    <div class="match-status">UPCOMING</div>
+    <div class="score">0 - 0</div>
+</div>
         <div class="team">
     <div class="player-photo">
         <img src="${match.away.photoUrl || 'images/default-player.png'}" alt="${match.away.playerName}">
