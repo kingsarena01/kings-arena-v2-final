@@ -109,7 +109,8 @@ fixtures.push({
     await setDoc(doc(db, "fixtures", "current"), {
         matches: fixtures
     });
-
+console.log(fixtures);
+alert(JSON.stringify(fixtures[0], null, 2));
     if(status){
         status.innerHTML =
         "Round 1, Round 2 & Round 3 Fixtures Generated Successfully!";
