@@ -46,6 +46,7 @@ const playersMap = {};
 playerSnap.forEach(doc => {
     const p = doc.data();
   console.log(p);
+  console.log(Object.keys(playersMap));
     playersMap[p.playerName.trim()] = p;
 });
 
