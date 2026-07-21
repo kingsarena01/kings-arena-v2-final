@@ -53,7 +53,7 @@ for (const groupName in groups) {
     const players = groups[groupName]
         .replace(/<[^>]*>/g, "\n")
         .split("\n")
-        .map(p => p.trim())
+        .map(p => p.replace(/\r/g, "").trim())
         .filter(p => p);
 
         if (players.length !== 4) continue;
