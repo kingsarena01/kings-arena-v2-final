@@ -22,7 +22,9 @@ const fixtureList = document.getElementById("fixtureList");
 if (generateBtn) {
 
 generateBtn.addEventListener("click", async () => {
-
+console.log("db =", db);
+console.log("Generate button clicked");
+alert("Generate clicked");
     const snap = await getDoc(doc(db, "groupDraw", "current"));
 
     if (!snap.exists()) {
